@@ -1,0 +1,33 @@
+cat > README.md << 'EOF'
+# IaC Pipeline — Terraform + LocalStack + GitHub Actions
+
+Automated Infrastructure as Code pipeline that provisions a simulated AWS environment using Terraform and LocalStack, with full CI/CD via GitHub Actions.
+
+## Tech Stack
+- **Terraform** — Infrastructure as Code
+- **LocalStack** — Free local AWS simulation
+- **GitHub Actions** — CI/CD automation
+
+## What the Pipeline Does
+1. Checks Terraform formatting
+2. Initializes providers
+3. Validates configuration
+4. Runs terraform plan to preview changes
+
+## How to Run Locally
+```bash
+localstack start -d
+cd terraform
+terraform init
+terraform apply
+```
+
+## Architecture
+- S3 bucket provisioned via Terraform
+- IAM role with EC2 trust policy
+- GitHub Actions triggers on every push to main
+EOF
+
+git add README.md
+git commit -m "docs: add README"
+git push
